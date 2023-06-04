@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const productInfo = await Product.findAll({
-      include: [{ model: Category }, { model: Tag, attributes: ['tag_name'], through: ProductTag, as: 'productTag_products' }]
+      include: [{ model: Category }, { model: Tag }]
     });
     res.status(200).json(productInfo);
   } catch (err) {
@@ -17,34 +17,13 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/', (req, res) => {
-//   // find all products
-//   // be sure to include its associated Category and Tag data
-//   Product.findAll()
-//     .then((products) => {
-//       const productIds = products.map(product => product.id);
-
-//       const productTags = ProductTag.findAll({
-//         where: {
-//           product_id: productIds
-//         },
-//         include: Tag
-//       });
-
-//       res.status(200).json(products);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
 // get one product
 router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findByPk(req.params.id, {
-      include: [{ model: Category}, { model: Tag, attributes: ['tag_name'], through: ProductTag, as: 'productTag_products'}]
+      include: [{ model: Category }, { model: Tag }]
     });
 
     if (!productData) {
@@ -57,19 +36,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-// // get one product
-// router.get('/:id', (req, res) => {
-//   // find a single product by its `id`
-//   // be sure to include its associated Category and Tag data
-//   Product.findAll({
-//     where: { id: req.params.id }
-//   })
-//     .then((products) => res.status(200).json(products))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
 
 // create new product
 router.post('/', (req, res) => {
@@ -156,8 +122,8 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-    if(!productInfo) {
-      res.status(404).json({message: 'No Product found with that ID'});
+    if (!productInfo) {
+      res.status(404).json({ message: 'No Product found with that ID' });
       return;
     }
     res.status(200).json(productInfo);
