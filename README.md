@@ -8,7 +8,10 @@
   [Click Here](https://drive.google.com/file/d/13VpQSUqNfIqtFybRRxVZZuNtiTIgnw6X/view) to see a video walkthrough of this application.
 
   Here are some screenshots of the insomnia testing:
-  
+  <img width="1431" alt="Screenshot 2023-06-04 at 7 46 12 PM" src="https://github.com/JennaStrom/ECommerceBackEnd/assets/123525191/e59a0f81-790c-486c-beb2-87f36c9de225">
+
+<img width="1424" alt="Screenshot 2023-06-04 at 8 23 13 PM" src="https://github.com/JennaStrom/ECommerceBackEnd/assets/123525191/03de85b2-a6b0-444f-9e3b-ad18c15ab2d5">
+
 
 ## Table of Contents
 - [Description](#description)
